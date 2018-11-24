@@ -59,4 +59,79 @@
 
 # Why do you need non-linear activation functions?
 
-  - 
+  - Without non-linear activation functions, the model is as good as no hidden layers
+  - Model becomes similar to like a logistic regression
+
+# Derivatives of activation function
+
+  - sigmoid - a(z) = 1/(1+e^-z)
+    - da/dz = 1/(1+e^-z) ( 1- 1/(1+e^-z)) = a(1-a)
+      - when z is large(10)= a(z) = 1; da/dz = 0
+      - when z is small(-10)= a(z) = 0; da/dz = 0
+      - when z is 0 = a(z) = 0.5; da/dz = 0.5*0.5 = 0.25
+  - tanh - g(z) = (e^z - e^-z)/(e^z + e^-z)
+    - dg/dz = 1-g(z)^2
+      - when z is large (10) = g(z) = 1; dg/dz=0
+      - when z is small(-10) = g(z) = -1; dg/dz=0
+      - when z is 0 = g(z) = 0; dg/dz=1
+  - relu = g(z) = max(0,z)
+    - dg/dz =
+      - 0 if z<0
+      - 1 if z>=0 ( in practice ) [ 1 if z>0 and undefined if z=0 ( theoretically ) ]
+  - Leaky relu = g(z) = max(0.01z,z)
+    - dg/dz=
+      - 0.01 if z<0
+      - 1 if z>=0 ( in practice )      
+
+# Gradient Descent For Neural Networks Implementation
+
+  - For one layer NN, parameters are w1, b1, w2, b2
+    - w1 size = (n1, n0)
+    - b1 size = (n1, 1)
+    - w2 size = (n2, n1)
+    - b2 size = (n2, 1)
+    - for single hidden layer, n2=1, n0=nx, n1=number of nodes in hidden layer
+    
+  - Cost Function:
+    - J(w1,b1,w2,b2) = (1/m)*(sum(Loss(yhat,y))) - yhat = a2
+    
+  - Gradient Descent:
+    - Initialize parameters w, b to zero ( can be different )
+    - Loop of Gradient Descent:
+      - Compute the predictions - Forward propagation
+      - Compute the derivatives - Backward propagation
+      - Update the parameters w,b
+        - w1 = w1 - alpha*dw1/dz
+        - b1 = b1 - alpha*db1/dz
+        - w2 = w2 - alpha*dw2/dz
+        - b2 = b2 - alpha*db2/dz  
+        
+    - Vectorized Format:
+      - Forward Propagation:
+        - Z1 = W1*X + B1
+        - A1 = g(Z1)
+        - Z2 = W2*A1 + B2
+        - A2 = g(Z2)
+      - Backward Propagation:
+        - dZ2 = A2 - Y
+        - dW2 = (1/m)*dZ2*A1t
+        - dB2 = (1/m)np.sum( dZ2, axis=1, keepDims=True)
+        - dZ1 = (W2t*dZ2) ** dA1   ** - elementwise product
+        - dW1 = (1/m)*dZ1*Xt
+        - dB1 = (1/m)np.sum( dZ1, axis=1, keepDims= True)
+        
+# Random Initializations
+
+  - Logistic regression initialize weights to zero
+  - Random initalization for neural networks.
+    - Problem with zero initalization:
+      - a11 = a12 as weights are same [ assuming b=0 ]
+      - dz1 = dz2 by symmetry
+      - dw has same values in the rows => w has the same values in rows
+      - a11 = a12 will be always same as weight vectors are same
+      - in a large NN, all the hidden units are computing the same function
+  - Random weight initialization: 
+    - W1 = np.random.randn((2,2))*0.01 - why 0.01 - we want the initalized weights to be very small.
+    - B1 = np.zeros((2,1))
+      
+      
