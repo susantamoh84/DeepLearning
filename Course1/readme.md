@@ -149,5 +149,21 @@
   - Generic Function:
     - Forward Propagation: 
       - Z[l] = W[l] * A[l-1] + b[l]
-      - A[l] = g[l](Z[l])
+      - A[l] = g[l] Z[l]
       
+# Backward-propagation in a Deep Network
+
+  - dZ[l] = dA[l] * g[l] Z[l]
+  - dW[l] = (1/m) dZ[l]* A[l-1]t
+  - db[l] = (1/m) np.sum ( dZ[l] , axis=1, keepdims=True )
+  - dA[l-1] = W[l]t * dZ[l]
+      
+# Hyper-parameters
+
+  - learning rate alpha
+  - #iterations
+  - # hidden layers L
+  - # hidden units n[1], n[2]... n[l]
+  - Choice of activation function
+  
+  
