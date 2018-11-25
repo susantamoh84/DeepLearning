@@ -135,3 +135,19 @@
     - B1 = np.zeros((2,1))
       
       
+# Forward-Propagation In a Deep Network
+
+  - Example NN - 2 input layers, 5 hidden layer 1, 5 hidden layer 2, 3 hidden layer 3, 1 output layer
+    - Z1 = W1 * X + b1
+    - A1 = g(Z1)
+    - Z2 = W2 * A1 + b2
+    - A2 = g(Z2)
+    - Z3 = W3 * A2 + b3
+    - A3 = g(Z3)
+    - Z4 = W4 * A3 + b4
+    - A4 = g(Z4)
+  - Generic Function:
+    - Forward Propagation: 
+      - Z[l] = W[l] * A[l-1] + b[l]
+      - A[l] = g[l](Z[l])
+      
