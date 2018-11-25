@@ -162,8 +162,8 @@
 
   - learning rate alpha
   - #iterations
-  - # hidden layers L
-  - # hidden units n[1], n[2]... n[l]
+  - #hidden layers L
+  - #hidden units n[1], n[2]... n[l]
   - Choice of activation function
 
 # Forward-Backward Prop Equations.
