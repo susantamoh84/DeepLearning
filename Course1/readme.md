@@ -166,4 +166,4 @@
   - # hidden units n[1], n[2]... n[l]
   - Choice of activation function
   
-  
+  ![Fwd/Bkwd propagation](https://github.com/susantamoh84/DeepLearning/blob/master/forward-backward%20prop.GIF)
