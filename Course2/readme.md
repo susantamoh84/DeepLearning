@@ -166,10 +166,10 @@
     - Vdb = beta*Vdb + (1-beta1)*db
     - Sdw = beta*Sdw + (1-beta2)*SW^2 
     - Sdb = beta*Sdb + (1-beta2)*db^2
-    - Vcorrected-dw = Vdw/(1-beta1-t)
-    - Vcorrected-db = Vdb/(1-beta1-t)    
-    - Scorrected-dw = Sdw/(1-beta2-t)
-    - Scorrected-db = Sdb/(1-beta2-t)       
+    - Vcorrected-dw = Vdw/(1-beta1^t)
+    - Vcorrected-db = Vdb/(1-beta1^t)    
+    - Scorrected-dw = Sdw/(1-beta2^t)
+    - Scorrected-db = Sdb/(1-beta2^t)       
     - W = W - alpha*Vcorrected-dw/sqrt(Scorrected-dw + epsilon) 
     - b = b - alpha*Vcorrected-db/sqrt(Scorrected-db + epsilon)
     
