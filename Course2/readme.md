@@ -247,6 +247,59 @@
   - Then using exponentialy weigthed average the overall mean & std-deviation^2
   - Calculate the beta, gamma, z~
 
+# Softmax-Regression
+
+  - n[l] ( number of units in the output layer ) - number of classes to predict
+  - Z[l] = W[l]*A[l-1] + b[l]
+  - Activation Function:
+    - t = exp(Z[l])
+    - A[l] = exp(Z[l])/sum(t[i])
+    - Ai[l] = ti/sum(ti)
+    
+  ![Softmax Classifier](https://github.com/susantamoh84/DeepLearning/blob/master/Course2/softmax-classifier.GIF)
+  
+
+# Deep Learning Frameworks
+
+  - caffe/caffe2
+  - CNTK
+  - DL4J
+  - Keras
+  - Lasagne
+  - mxnet
+  - PaddlePaddle
+  - TensorFlow
+  - Theano
+  - Torch
+  
+# Tensorflow
+
+  - import tensorflow as tf
+  - w = tf.Variable(0, dtype=tf.float) # initalize a variable
+  - cost = tf.add( tf.add( w**2, tf.multiply( -10. * w ) ) , 25 ) # cost function : W^2 - 10W + 25
+  - train = tf.train.GradientDescentOptimizer(0.01).minimize(cost)
+  
+  - Following are standard code for initializing tensorflow
+  - init = tf.global_variables_initializer()
+  - session = tf.Session()
+  - session.run(init)
+  - print(session.run(w))
+  - session.run(train)
+  - print(session.run(w)) 
+  - for i in range(1000):
+    - session.run(train)
+  - session.run(w)
+  
+  - coefficients = np.array([ [1.], [-20.], [100.] ])
+  - x = tf.placeholder(tf.float32, [3,1])
+  - cost = x[0][0]*w**2 + x[1][0]*w + x[2][0]
+  - session.run(train, feed_dict={x:coefficients})
+  
+  - Use with command for better clean-up on error:
+    - with tf.Session() as session:
+      - session.run(init)
+      - print(session.run(w))
+      
 # Reference
 
   - http://cs231n.github.io/neural-networks-2/#reg
