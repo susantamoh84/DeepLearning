@@ -34,5 +34,6 @@
   ![L2 Regularization](https://github.com/susantamoh84/DeepLearning/blob/master/Course2/L2%20Regularization.GIF)
 
 # Dropout Regularization
-
+  
+  - Randomly drop-out a portion of the units in each hidden layer  
   ![Dropout](https://github.com/susantamoh84/DeepLearning/blob/master/Course2/dropout.GIF)
