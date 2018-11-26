@@ -164,7 +164,7 @@
     - compute dW, db on the current mini-batch
     - Vdw = beta*Vdw + (1-beta1)*dW
     - Vdb = beta*Vdb + (1-beta1)*db
-    - Sdw = beta*Sdw + (1-beta2)*SW^2 
+    - Sdw = beta*Sdw + (1-beta2)*dW^2 
     - Sdb = beta*Sdb + (1-beta2)*db^2
     - Vcorrected-dw = Vdw/(1-beta1^t)
     - Vcorrected-db = Vdb/(1-beta1^t)    
