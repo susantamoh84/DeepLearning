@@ -67,3 +67,31 @@
     - Var(W) = 2/n
     - W[l] = np.random.randn(shape) * np.sqrt( 2/ n[l-1] ) - This influences activation function using relu and the activations remain within a range.
     - for tanh activation: W[l] = np.random.randn(shape) * np.sqrt( 1/ n[l-1] ) - Xavier initialization
+
+# Numerical approximations of gradients:
+
+  - gradient = ( f(theta+episilon) - f(theta-episilon) ) / 2*episilon
+  - this two-sided approach is much better than one sided difference
+  
+# Gradient Checking:
+
+  - Verify the gradients
+  - Take W[1], b[1], ... W[l], b[l] and reshape into a big vector theta.
+  - Take dW[1], db[1], ... dW[l], db[l] and reshape into a big vector d-theta.
+  - for each i:
+    - d-theta[i] = ( J(theta1, theta2... thetai+episilon, ...) - J(theta1, theta2... thetai-episilon, ...) ) / 2*episilon
+    - d-theta[i] = dJ/d-thetai
+    - take episilon = 10^-7
+    - check (||d-theta(approx) - d-theta||2) / (||d-theta(approx)||2 + ||d-theta||2)
+      - if 10^-7 - great
+      - if 10^-5 - ok
+      - if 10^-3 - worry      
+
+# Gradient checking implementations
+
+  - Don't use in training - only to debug
+  - if algorithim fails grad check, look at components to find bug
+  - Remember regularization
+  - Doesn't work with dropout.
+
+    
