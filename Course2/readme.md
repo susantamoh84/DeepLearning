@@ -198,6 +198,23 @@
   - plateaus can make learning slow
     - adam, momentum will help
 
+# Tuning Hyper-parameters
+
+  - Don't use grid, use random choices
+  - coarse sampling
+  - finer sampling in a subset of hyper-parameters
+  
+# Picking hyper-paramters at random
+
+  - uniform scale sampling e.g. for alpha from 0.0001 to 1 -  this will sample more points from 0.1 to 1
+  - log scale sampling e.g. for alpha from 0.0001 to 1 - equally sample values from 0.0001, 0.001, 0.01, 0.1, 1
+  - for exponentially weighted average
+    - beta = 0.9, 0.99, 0.999....
+    - 1-beta = 0.1, 0.01, 0.001 ...
+      - r in [-1, .. -3] <- sampling in log scale
+      - 1-beta = 10^r
+      - beta = 1 - 10^r
+
 # Reference
 
   - http://cs231n.github.io/neural-networks-2/#reg
