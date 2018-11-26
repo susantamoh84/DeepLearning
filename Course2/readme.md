@@ -32,11 +32,17 @@
 # L2 Regularization
   
   ![L2 Regularization](https://github.com/susantamoh84/DeepLearning/blob/master/Course2/L2%20Regularization.GIF)
+  - Weight decay
+    - Regularization technique (L2) which results in gradient descent shriking the weights on every iteration
 
 # Dropout Regularization
   
   - Randomly drop-out a portion of the units in each hidden layer  
   ![Dropout](https://github.com/susantamoh84/DeepLearning/blob/master/Course2/dropout.GIF)
+  - During drop-out randomly sampled neurons < p ( keep_prob ) are deleted from each hidden layer
+  - During testing time, the neurons are not deleted and hence the activations are scaled by a factor of 1/p.
+  - In inverted dropouts the output of neurons are scaled by a factor of 1/p after deleting the neurons.
+    - No scaling is required in the testing phase.
 
 # Data Augumentation - Regularization
 
