@@ -224,6 +224,8 @@
     - Znorm[i] = (Zi - mu)/(sigma^2 + epsilon)
     - Z~[i] = gamma( Znorm[i] ) * Znorm[i] + beta
     
+  - It works on one minibatch at a time
+    
   - Implement gradient descent
     - for t=1 to numMiniBatches
       - compute forward propagation on X[t]
@@ -236,6 +238,12 @@
         - can be implemented with momentum, adam, rmspropo
         
 ![Batch Norm](https://github.com/susantamoh84/DeepLearning/blob/master/Course2/batch%20norm%20as%20regularization.GIF)
+
+# Batch Norm at test time
+
+![Batch Norm Maths](https://github.com/susantamoh84/DeepLearning/blob/master/Course2/batch%20norm%20maths.GIF)
+
+
 
 # Reference
 
