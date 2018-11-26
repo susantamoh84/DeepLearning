@@ -243,7 +243,9 @@
 
 ![Batch Norm Maths](https://github.com/susantamoh84/DeepLearning/blob/master/Course2/batch%20norm%20maths.GIF)
 
-
+  - At test time the means and std-deviation^2 are calculated for each mini-batch
+  - Then using exponentialy weigthed average the overall mean & std-deviation^2
+  - Calculate the beta, gamma, z~
 
 # Reference
 
