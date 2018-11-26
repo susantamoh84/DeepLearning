@@ -101,3 +101,99 @@
   - Doesn't work with dropout.
 
     
+# Batch vs mini-batch gradient descent
+
+  - if m=5,000,000 the batch training becomes very slow.
+  - split-up the training set into smaller batches ( mini-batch size = 1000 )
+  - for t=1 ,... 5000
+    - Forward Prop on X[t], Y[t]
+      - X[1] = W[1] * X[t] + b[1]
+      -....
+      - A[l] = g[l] Z[l]
+    - Compute cost function J = (1/1000) * [ sum(loss(yhat, y)) + lambda/(2*1000) sum(square(||W[l]||)) ]
+    - Backprop to compute grads for J[t] using ( X[t], Y[t] )
+    - Update weights, constants
+    - "1 epoch" - single pass through training set.
+  - Total 5000 epochs before training all data.
+  - This runs much faster than batch gradient descent.
+  - when mini-batch size = 1, its called stochastic gradient descent - every example is its own mini-batch
+  - when mini-batch size = m, its batch gradient descent
+  - typical mini-batch sizes: 64, 128, 256, 512, 1024 ( rare )
+  - make sure mini-batch ( X[t], Y[t] ) fits in CPU/GPU memory.
+  
+# Exponentially Weighted (Moving) Averages
+
+  - Vt = beta * Vt-1 + (1-beta) * theta-t
+  - Vt as approximately avg. over ~ 1/(1-beta) days tempr
+    - beta = 0.9 : ~10 days tempr avg.
+    - beta = 0.98 : ~50 days tempr avg.
+    - beta = 0.5 : ~2 days tempr avg.
+    
+  - V100 = 0.1*theta-100  + 0.1*0.9*theta-99 + 0.1*0.9^2*theta-98 + 0.1*0.9^3*theta-97 + ....
+  - V100 = sum(0.1*0.9^i*theta-(100-i))
+  - in 10 days decay is 1/e ~ 1/3
+  
+# Bias Correction
+
+  - Vt = beta * Vt-1 + (1-beta) * theta-t
+  - bias correction: Vt / (1 - beta^t) - very important in the early phase
+  
+# Gradient descent with momentum ( Speed up gradient descent )
+
+  - on iteration t:
+    - compute dW, db on the current mini-batch
+    - Vdw = beta*Vdw + (1-beta)*dW - smoothen the dW ( sometimes 1-beta term is omitted - Vdw = beta*Vdw - not very intutive , alpha is different)
+    - Vdb = beta*Vdb + (1-beta)*db - smoothen the db
+    - W = W - alpha*Vdw
+    - b = b - alpha*Vdb
+    - practically bias-correction is not required.
+  - 2 hyper-parameters: alpha, beta, in practice beta=0.9
+  
+# RMSProp ( Speed up gradient descent )
+
+  - on iteration t:
+    - compute dW, db on the current mini-batch
+    - Sdw = beta*Sdw + (1-beta)*SW^2 
+    - Sdb = beta*Sdb + (1-beta)*db^2
+    - W = W - alpha*dw/sqrt(Sdw + epsilon) - epsilon is added to avoid divide by 0. 
+    - b = b - alpha*db/sqrt(Sdb + epsilon)
+
+# Adam optimization
+
+  - on iteration t:
+    - compute dW, db on the current mini-batch
+    - Vdw = beta*Vdw + (1-beta1)*dW
+    - Vdb = beta*Vdb + (1-beta1)*db
+    - Sdw = beta*Sdw + (1-beta2)*SW^2 
+    - Sdb = beta*Sdb + (1-beta2)*db^2
+    - Vcorrected-dw = Vdw/(1-beta1-t)
+    - Vcorrected-db = Vdb/(1-beta1-t)    
+    - Scorrected-dw = Sdw/(1-beta2-t)
+    - Scorrected-db = Sdb/(1-beta2-t)       
+    - W = W - alpha*Vcorrected-dw/sqrt(Scorrected-dw + epsilon) 
+    - b = b - alpha*Vcorrected-db/sqrt(Scorrected-db + epsilon)
+    
+  - Hyper-parameters tuning 
+    - alpha - needs to be tuned
+    - beta1 - 0.9   (dw)
+    - beta2 - 0.999 (dw^2)
+    - epsilon - 10^-8
+    
+  - Adam - Adaptive moment estimation
+  
+# Learning rate decay
+
+  - slowly reduce alpha - as learning converges it should take slower learning steps
+  - alpha = 1/(1 + decay_rate * epoch_run) * alpha-0
+  - alpha = 0.95 ^ epoch_run * alpha-0 - exponentially decay
+  - alpha = K/sqrt(apoch_run) * alpha-0 or K/sqrt(t) * alpha-0 
+  - manual decay
+  
+# Local Optima
+
+  - saddle point - most chances of getting these - not a local optima
+    - derivative is 0
+  - the more number of parameters, the more chances of getting saddle points
+  - Unlikely to get stuck in a bad locl optima
+  - plateaus can make learning slow
+    - adam, momentum will help
