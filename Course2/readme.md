@@ -29,6 +29,10 @@
 
   - Bias-Variance depends on the Human Error or Optimal Error or Bayesian Error
   
-  # Regularization
+# L2 Regularization
   
   ![L2 Regularization](https://github.com/susantamoh84/DeepLearning/blob/master/Course2/L2%20Regularization.GIF)
+
+# Dropout Regularization
+
+  ![Dropout](https://github.com/susantamoh84/DeepLearning/blob/master/Course2/dropout.GIF)
