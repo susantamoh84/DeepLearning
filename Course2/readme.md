@@ -272,7 +272,7 @@
   - Theano
   - Torch
   
-# Tensorflow
+# Tensorflow Basic Syntax
 
   - import tensorflow as tf
   - w = tf.Variable(0, dtype=tf.float) # initalize a variable
