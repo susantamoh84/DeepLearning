@@ -215,6 +215,28 @@
       - 1-beta = 10^r
       - beta = 1 - 10^r
 
+# Batch Normalization for speeding learning
+
+  - Normalize the inputs
+  - Normalize the Z values
+    - mu = 1/m * sum( Zi )
+    - sigma^2 = 1/m * sum ( (Zi - mu)^2 )
+    - Znorm[i] = (Zi - mu)/(sigma^2 + epsilon)
+    - Z~[i] = gamma( Znorm[i] ) * Znorm[i] + beta
+    
+  - Implement gradient descent
+    - for t=1 to numMiniBatches
+      - compute forward propagation on X[t]
+        - In each hidden layer use BN ( batch normalization ) to replace Z[l] with Z~[l]
+      - use backward prop to compute dW[l], dbeta[l], dgamma[l] - db[l] is not required as normalization is done
+      - Update parameters
+        - W[l] - W[l] - alpha * dW[l]
+        - beta[l] = beta[l] - alpha * dbeta[l]
+        - gamma[l] = gamma[l] - alpha * dgamma[l]
+        - can be implemented with momentum, adam, rmspropo
+        
+![Batch Norm](https://github.com/susantamoh84/DeepLearning/blob/master/Course2/batch%20norm%20as%20regularization.GIF)
+
 # Reference
 
   - http://cs231n.github.io/neural-networks-2/#reg
