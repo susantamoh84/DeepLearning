@@ -197,3 +197,7 @@
   - Unlikely to get stuck in a bad locl optima
   - plateaus can make learning slow
     - adam, momentum will help
+
+# Reference
+
+  - http://cs231n.github.io/neural-networks-2/#reg
