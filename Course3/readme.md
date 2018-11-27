@@ -76,3 +76,80 @@
       - you have changed the target as the low res images
   - Option 2 will give better performance over time.
       
+  - Training-dev set: Carve out a small portion from training set to be training-dev set.
+    - Same distribution as training set, but not used for training
+    - Dev & Test set are from a different distribution
+  - example;
+    - Training error - 1%
+    - Training-dev error - 9% ---> variance problem
+    - Dev error - 10%
+  - example;
+    - Training error - 1%
+    - Training-dev error - 1.5% 
+    - Dev error - 10%  ----------> Data mismatch problem  - learning algorithm hasn't seen data like Dev set.
+  - example;
+    - Human error - 0%
+    - Training error - 10% ----- > Avoidable High bias problem
+    - Training-dev error - 11% 
+    - Dev error - 12%  
+  - example;
+    - Human error - 0%
+    - Training error - 10% ----- > Avoidable High bias problem
+    - Training-dev error - 11% 
+    - Dev error - 20% -----------> Data mismatch problem  
+
+# Bias/Variance on mismatched training and dev/test sets
+
+  - Avoidable bias                    = Training set error - Human level error
+  - Variance                          = Training-dev set error - Training set error
+  - Data Mismatch                     = Dev error - Training-dev error
+  - Degree of overfitting in dev set  = Test set error - Dev set error
+  
+# Addressing data mismatch
+
+  - carry out manual error analysis to try to understand different between training and dev/test sets
+  - make training data more similar or collect more data similar to dev/test set.
+  - Artificial data synthesis
+    - add noise to data
+    - generally its a small portion of whole data
+    - works significantly well in speech recognition
+
+# Transfer Learning
+
+  - Example1 : if you have a NN trained on image recognition; use it for radiology diagnosis
+    - Option 1 - retrain weights/parameters of last layer - fine-tuning
+    - Option 2 - retrain all weights/parameters - pre-training ( already trained on image recogn )
+  
+  - Example2 : you have a NN trained in speech recognition; use it for wakeword/triggerword detection
+    - Option 1 - add many more layers 
+    - Option 2 - add output layer with many output nodes
+    
+  - When transfer learning makes sense ?
+    - Task A & B have same input x
+    - You have lot more data for Task A than Task B
+    - Low level features from A could be helpful for learning B
+    
+# Multi-task learning
+
+  - One NN doing several tasks.
+  
+  - Simplified autonomous driving example
+    - pedestrians
+    - cars
+    - stop signs
+    - traffic lights
+      - Y is a (4,m) matrix
+      - unlike softmax regression, one image will have multiple labels
+  - Can train a big enough NN to do well on all tasks.
+  - in practice Multi-task learning is used a lot compared to multi-task learning
+  
+# End To End Learning
+
+  - Speech Recognition Example
+    - X audio -->(MFCC algo) features (ML) --> Phonemes --> words --> y transcript
+    - audio --------------------------------------------------------> transcript ( end to end learning )
+    - Needs a large dataset to work well. For small data better to use multiple stages
+
+  - Face Recognition
+    - Capture the image from turnstile
+    - zoom into the face and fed into NN
