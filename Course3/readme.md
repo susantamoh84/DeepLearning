@@ -50,5 +50,5 @@
       - Variance = Dev error - Train error = 1%
         - hence it is advisible here to reduce the training error.
         
-  ![supass human level error](https://github.com/susantamoh84/DeepLearning/blob/master/Course3/suprass%20human%20level.GIF)
+  ![supass human level error](https://github.com/susantamoh84/DeepLearning/blob/master/Course3/suprass%20human%20level1.GIF)
     
