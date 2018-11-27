@@ -52,3 +52,27 @@
         
   ![supass human level error](https://github.com/susantamoh84/DeepLearning/blob/master/Course3/suprass%20human%20level1.GIF)
     
+
+# Incorrect Labeled Data
+
+  - If random errors, then no need to correct. Leave it as it is.
+  - If consistent errors, then its good to fix the errors.
+    - Depending on the % of error because of incorrect labeling, you can decide if it needs to be done.
+    
+  ![Correct labels](https://github.com/susantamoh84/DeepLearning/blob/master/Course3/correct%20dev-test%20set.GIF)
+  
+# Training & Testing on different distributions
+
+  - 2,00,000 images from source 1 ( high resolution images - webpages ), 10,000 images from source 2( low resolution images - mobile images)
+  - Total 2,10,000 images
+  - Option 1:
+    - Random shuffle on total images and choose train/dev/test sets
+    - 2,05,000 images in train, 2500 images each in dev/test set
+    - most of the images from the high resolution category in dev/test set.
+  - Option 2:
+    - Training set - 2,00,000 images from high res, 5000 from low res
+    - dev- 2500 images from low res
+    - test- 2500 images from low res    
+      - you have changed the target as the low res images
+  - Option 2 will give better performance over time.
+      
