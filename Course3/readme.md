@@ -34,3 +34,21 @@
   - Its possible to get human level accuracy
   - Minimum possibe error is Bayes Optimal Error - best possible error
 ![Error Compare](https://github.com/susantamoh84/DeepLearning/blob/master/Course3/compare%20human%20level.GIF)
+
+  - If the ML algorithm is doing worse than human level performance, following can be done:
+    - Get Labeled data from human
+    - Gain insight from manual error analysis
+    - Better analysis of bias & variance
+    - Depending on the purpose of the model, the human level error can change:
+    ![human level error](https://github.com/susantamoh84/DeepLearning/blob/master/Course3/human%20level%20error.GIF)
+    
+  - Error analysis example:
+    - human proxy for bayes error - 1%
+    - Train error - 5%
+    - Dev error - 6%
+      - Avoidable bias = Train error - human level error = 4%
+      - Variance = Dev error - Train error = 1%
+        - hence it is advisible here to reduce the training error.
+        
+  ![supass human level error](https://github.com/susantamoh84/DeepLearning/blob/master/Course3/suprass%20human%20level.GIF)
+    
