@@ -182,4 +182,42 @@
   - 138 million parameter
   - 16 layers of conv+pool layers
   
-# 
+# ResNet
+
+  - Residual Block:
+    - a[l] --> linear --> Relu a[l+1] --> linear - * -> Relu a[l+2]
+        |                                          |  
+        -------------------------------------------| <--- shortcut
+    - Short-cut: a[l+2] = g( z[l+2] + a[l] )
+    - Allows to train much much deeper networks
+      - because of short-cuts, the gradients don't explode/vanish so fast
+    ![ResNet](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/ResNet.GIF)
+    
+# Using 1x1 convolutions
+
+  - Reduces the number of channels
+  - Adds more non-linearity to the network
+  - Example:
+    - Input 28x28x192 
+    - 32 1x1 conv : 1x1x192
+    - Output: 28x28x32 <---- Reduced the number of channels from 192 to 32
+
+# Inception Network
+
+  ![Inception Net](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/Inception.GIF)
+  
+  - Computation Cost is high
+  - Estimation of compute cost
+    - Example image 28x28x192 ---- Conv (5x5) 32 filters, same ---> Output 28x28x32
+    - cost - 28x28x32 * 5x5x192 --- 120 million parameters
+  - Reduce cost using 1x1 conv
+    - 28x28x192 ---- Conv (1x1) 16 filters, same ---> image 28x28x16 ---- Conv (5x5) 32 filters, same ---> 28x28x32
+    - compute cost: 28x28x16 * 1x1x192 = 2.4 million; 28x28x32 * 5x5x16 = 10.0 million; total cost = 12.4 million
+    - 1/10 th of the previous cost
+    - Conv 1x1 is called Bottleneck layer
+  - Bottle neck layer does't impact learning provided used carefully
+  - Inception network - Inception module getting repeated multiple times
+  - GoogleNet - multiple Inception networks stacked
+  
+  
+    
