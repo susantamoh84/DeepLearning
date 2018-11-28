@@ -233,6 +233,10 @@
 # State Of Computer Vision
 
   - Because of lack of data, hand engineering is very important here.
+  - Transfer Learning can be useful
   ![State ComputerVision](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/StateOfComputerVision.GIF)
   
-  
+  - Tips For Winning Competetions
+    - Ensemble - many model, average output
+    - Multi-crop test data - Tests on multiple version of the test data and aggregate
+    
