@@ -228,11 +228,11 @@
   - Local Wrapping
   
   - Color Shifting
-    [Color Shifting](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/ColorShifting.GIF)
+    ![Color Shifting](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/ColorShifting.GIF)
 
 # State Of Computer Vision
 
   - Because of lack of data, hand engineering is very important here.
-[State ComputerVision](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/StateOfComputerVision.GIF)
+  ![State ComputerVision](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/StateOfComputerVision.GIF)
   
   
