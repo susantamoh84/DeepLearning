@@ -151,5 +151,22 @@
     - Needs a large dataset to work well. For small data better to use multiple stages
 
   - Face Recognition
-    - Capture the image from turnstile
-    - zoom into the face and fed into NN
+    - zoom into the face from the original image - deep learning
+    - recognize the image from the past images - deep learning
+    - End to End is to merge the above steps.
+    
+  - Machine Transalation
+    - English --> Text analysis .... --> French
+    - English -------------------------> French ( End to End deep learning works well )
+    
+  - Estimating Child's age from hand images
+    - Images --> bones --> bone length --> age
+    - Image -----------------------------> age ( requires a lot of data )
+    
+  - Pro's of Eng to end learning
+    - lets the data speak
+    - less hand designing of features
+  - Cons
+    - Need a large amount of data
+    - excludes potentially useful hand-designed components
+    
