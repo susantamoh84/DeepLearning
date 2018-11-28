@@ -219,5 +219,20 @@
   - Inception network - Inception module getting repeated multiple times
   - GoogleNet - multiple Inception networks stacked
   
+# Data Augumentation Techniques
+
+  - Mirroring ---> common
+  - Random Cropping ---> common
+  - Roation
+  - Shearing
+  - Local Wrapping
   
-    
+  - Color Shifting
+    - [Color Shifting](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/ColorShifting.GIF)
+
+# State Of Computer Vision
+
+  - Because of lack of data, hand engineering is very important here.
+  [State ComputerVision](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/StateOfComputerVision.GIF)
+  
+  
