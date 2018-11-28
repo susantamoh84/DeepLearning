@@ -154,3 +154,32 @@
     - Sparsity of connections: Each output only depends on a smaller number of inputs
     - translation invariance - image shifted by a few pixels
     
+
+# Networks Case
+  - Classic Networks
+    - LetNet-5
+    - AlexNet
+    - VGG
+  - ResNet
+  - INception
+  
+# LetNet-5
+
+  ![LetNet-5](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/LeNet.GIF)
+  - Nh, Nw decreases along the network and Nc increases
+  - 60K parameters to tune
+  
+# AlexNet
+
+  ![AlexNet](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/AlexNet.GIF)
+  - Large Network
+  - 60million parameters to tune
+  
+# VGG-16
+
+  ![VGG](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/VGG.GIF)
+  - Very large but uniform network
+  - 138 million parameter
+  - 16 layers of conv+pool layers
+  
+# 
