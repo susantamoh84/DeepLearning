@@ -240,3 +240,48 @@
     - Ensemble - many model, average output
     - Multi-crop test data - Tests on multiple version of the test data and aggregate
     
+# Object Detection/Localization
+
+  ![Object Detection](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/ObjectDetection.GIF)
+  
+  - Classification (Normal)
+    - Image ----> Convl layer ----> Softmax 4 units ( for classifying pedestrian, car, motorcyle, background )
+  - To find the location of car inside the image
+    - bounding box parameters: 
+      - bx, by - centroid of the bounding box
+      - bh, bw - height, width of the bounding box
+    - Add these parameters to the output layer
+      - output layer= [probablity] classification objects + bounding box parameters
+      - y = [ Pc, bx, by, bh, bw, c1, c2, c3 ]
+        - Pc=1 if there is an object else 0
+  - Loss function L(yhat, y) = sum[ (yhat1-y1)^2 + (yhat2-y2)^2 + (yhat3-y3)^2 ....yhat8-y8)^2 ] if y1=1
+                             = (yhat1-y1)^2 if y1=0
+
+# LandMark Detection
+
+  ![LandMark Detection](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/LandMarks.GIF)
+  
+# Sliding Windows Detection
+
+  - pass a number of windows of various sizes and see if an object is detected
+  - high computational cost
+
+# Convolutional Layers ( used for sliding windows )
+
+  - Convolutional implementation
+  ![Convl Layer](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/SlidingWindowsConvLayer.GIF)
+  - Sliding Window working
+  ![Convl Layer](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/SlidingWindowsConvLayerWorking.GIF)
+  - Bounding box is less accurate
+  
+# Yolo Algorithim ( more accurate bounding boxes )
+      
+  - Yolo - You only look once
+  - Place a grid on the image - 3x3, 19x19 etc
+  - Output layer - 3x3x8 volume ( for a grid of 3x3 )
+  - Very fast - as it need only 1 conv net
+  - used in real-time object detection
+  ![Convl Layer](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/Yolo.GIF)
+  - bounding boxes should be between 0,1
+  - But bounding boxes can be > 1
+  
