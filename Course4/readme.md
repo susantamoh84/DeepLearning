@@ -285,3 +285,61 @@
   - bounding boxes should be between 0,1
   - But bounding boxes can be > 1
   
+# Intersection Over Union
+
+  - Computes Intersection Over Union of the bounding boxes [ Used for the running the convul network ]
+  - IOU ( Intersection Over Union ) = (Size of Intersection of the boxes) / (Size of Union of the boxes)
+    - Correct if IoU >= 0.5 - the answer is decent
+      - this is just a convention
+      - higher the IoU, the better the accuracy of the algorithim
+
+# Non-max supression example
+
+  - When the grid cells are large, many cell will detect the car
+  - non-max supression removes the multiple detection of the cars and only marks 1 car detection
+    - Discard all boxes with Pc <= 0.6
+    - Finds the probability of the car detection (Pc) which is the heighest
+      - Pickup the box with the largest Pc, output that as a prediction
+      - Discard any remaining box with IoU >= 0.5 with the box output in the previous step
+
+# Anchor Boxes
+
+  - Overlapping Objects: When there are more than 1 predictions, anchor boxes are required
+  - 2 anchor boxes ( horizontal rectange or vertical rectangle )
+    - Y = [ Pc, bx, by, bh, bw, c1, c2, c3, Pc,bx...... C3 ]
+  - Anchor Box Algorithim:
+    - Previously: each object in training image is assigned to grid cell containing object's midpoint.
+      - Output y: 3x3x8
+    - Anchor Boxes: 
+      - each object in training image is assigned to grid cell containing object's midpoint.
+      - Also assigned to the anchor box for the grid cell with the highest IoU
+        - output y: 3x3x16 (2x8) --- > 2 anchor boxes
+          - dimension of y = 8 because of 3 different classes
+      - Car Only (horizontal anchor box) Y = [ Pc, bx, by, bh, bw, c1, c2, c3, Pc,bx...... C3 ]
+                                             [ 0, ??                          , 1 , bx ........]
+                                               ----------anchor box1---------   ----- anchor box2--
+      - doesn't work well for more than 2 objects overlapping
+      
+# YOLO Algorithm
+
+  - y = 3x3x2x8 - for 3 classes prediction [ 1 - pedestrian, 2 - car, 3 - motorcycle ]
+    - 3x3 is for a grid of size 3x3 ( In-practice it'll be 19x19 or even larger )
+    - 2 is for anchor boxes
+  - Outputting the non-max supressed outputs
+    - For each cell in grid (3x3), there will be 2 bounding boxes predicted
+    - it can go outside the grid cell height & widht
+    - Get rid of low probability predictions
+    - For each class ( pedestrian, car, motorcycle ) use non-max supression to generate final predictions.
+    
+# Region proposal: R-CNN
+
+  - Pick few regions to run the Conv-net classifier
+  - Region proposal:
+    - Segmentation algorithm: Find ~ 2000 blobs and run classifier on those
+  - Region proposal & classify proposed regions one at a time.
+  - It is slow.
+    - Fast R-CNN - Use convolutions impl of sliding windows to classify all proposed regions
+      - Region proposal is still slow
+    - Faster R-CNN - Use Conv net to propose regions
+
+  
