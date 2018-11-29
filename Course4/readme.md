@@ -317,7 +317,7 @@
           - dimension of y = 8 because of 3 different classes
       - Car Only (horizontal anchor box) Y = [ Pc, bx, by, bh, bw, c1, c2, c3, Pc,bx...... C3 ]
                                              [ 0, ??                          , 1 , bx ........]
-                                               ----------anchor box1---------   ----- anchor box2--
+      -                                        ----------anchor box1---------   ----- anchor box2--
       - doesn't work well for more than 2 objects overlapping
       
 # YOLO Algorithm
