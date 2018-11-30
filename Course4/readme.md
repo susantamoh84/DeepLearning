@@ -399,3 +399,59 @@
   - Run a logistic regression on the different vectors to find the similarity
   - Pairs Of Images ====> target labels (0/1) <------ Supervised learning
     - Train a siamese network using back propagation
+
+# What are Deep ConvNets Learning ?
+
+  - Layer wise 3x3 cells which are causing high activations in next layer
+  ![Layer1 Learning](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/deepConvNet.GIF)
+  - Learning in much deeper layer
+  ![Deep Layer Learning](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/deepConvNetLayers.GIF)
+  
+# Neural Style Transfer
+
+  - Content C
+  - Style S
+  - Generated Image G
+  - Cost Function
+  - J ( G ) = Jcontent ( C, G ) + beta * Jstyle ( S, G )
+  - Find the Generated Image G
+    - Initialize G randomly 100x100x3
+    - Use gradient descent to minimize J(G)
+      - G = G - d/dG ( J(G) )
+
+# Neural Style Transfer - Content Cost Function
+
+  - Jcontent ( C, G ) 
+    - Say you are using hidden layer l to compute content cost
+    - Use pre-trained ConvNet. (E.g. VGG network)
+    - Let a[l[c] & a[l][g] are the activations of layer l on the images
+    - if a[l][c] & a[l][g] are similar then both the images have similar content
+    - J(C,G) = 0.5 * || a[l][c] - a[l][g] || ^ 2
+      - Square of the L2 norm
+
+# Neural Style Transfer - Style Cost Function
+
+  - Say you are using layer l's activation to mesure style
+  - Define Style as correlations between the activations across channels
+  - How correlated are the activations acorss channels ?
+    - Take point at the same area in different channel and compare
+  - Style Intution
+    - When a particular pattern ( like vertical lines ) in hidden layer correlates to a particular pattern ( like orange tint ) in the hidden layer
+    ![Style Intution](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/StyleIntution.GIF)
+    
+  - Style Matrix
+    - a[l][i,j,k] = activation at H=i, W=j, C=k ---- > C is the number of channels
+    - G[l] = Nc[l]xNc[l]
+    - G[l]kk` = sum(i=1:Nh[l]) sum(j=1:Nw[l]) ( a[l][i,j,k] * a[l][i,j,k`] ) <----- it is done for the style image
+      - a[l][i,j,k] * a[l][i,j,k`] will be large if both are coorelated or small if not
+    - G[l]kk` = sum(i=1:Nh[l]) sum(j=1:Nw[l]) ( a[l][i,j,k] * a[l][i,j,k`] ) <----- same is done for the generated image
+
+    - G is also called the "Gram metrix"
+    ![Style Cost Function](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/StyleCostFunction.GIF)
+
+# 1-D & 3-D Generalizations
+
+  - Heart Beats 1-D data
+    ![1D Convl](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/1dConv.GIF)
+  - X-ray images of human torso
+    ![3D Convl](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/3dConv.GIF)
