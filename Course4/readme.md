@@ -342,4 +342,60 @@
       - Region proposal is still slow
     - Faster R-CNN - Use Conv net to propose regions
 
+# Face Recognition
   
+  - Liveness Detection - This is one important aspect of identifying the whether the face recognition can work on a photograph or live person
+  
+  - Face Recognition Problem
+    ![Face Recogn](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/faceRecogn.GIF)
+    
+# One-Shot Learning
+
+  - Learning from just 1 image of the person in the database
+    - Use CNN with softmax.
+    - Doesn't work well because of less training data
+  - Learning "Similiarity" function
+    - degreee of difference  = d(img1, img2)
+    - if degree of difference <= T - same person        }   <------ Verification
+    -                         >  T - different person   } 
+
+# Siamese Network
+
+  - Neural Network having same weights is used to create encoding vectors for different images
+  ![Deep Face](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/Siamese.GIF)
+  
+  - Learning Objective of Siamese Network
+  ![Siamese Learning](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/SiameseLearning.GIF)
+  
+# Tripplet Loss
+
+  - A = Anchor image
+  - P = Positive image match
+  - N = Negative image match
+  - || f(A) - f(P) ||^2  + alpha <=  || f(A) - f(N) ||^2
+  - Example 
+    - d(A,p) = 0.5 
+    - d(A,N) = 0.51
+    - not good enough to say a negative match. d(A,N) should be greater than 0.7 to confirm the negative match.
+  - Loss L(A,P,N) = MAX( || f(A) - f(P) ||^2  -  || f(A) - f(N) ||^2 + alpha, 0 ) , always >= 0
+    - J = sum[i] L(A[i], P[i], N[i] )
+  - Example training set: 10k pictures for 1k persons    
+  - Choosing A,P,N for the training set
+    - If choosen randomly, then d(A,P) + alpha <= d(A,N) is easily satisfied
+    - Choose the triplets when d(A,P) + alpha <= d(A,N) is hard to satisy
+      - increases efficieny of the gradient descent algorithm
+  - Algorithims
+    - Face Net
+    - Deep Face
+  ![Triplet Training](https://github.com/susantamoh84/DeepLearning/blob/master/Course4/TripletTraining.GIF)
+  
+  - In industry companies are using 10,100million images for face nets
+  
+# Face Verification & Binary Classification
+
+  - Input pair of image
+  - Applying simaese learning, find the 128 encoded vector for each image
+  - Take the different of both the encoded vectors for 2 different imag
+  - Run a logistic regression on the different vectors to find the similarity
+  - Pairs Of Images ====> target labels (0/1) <------ Supervised learning
+    - Train a siamese network using back propagation
