@@ -27,5 +27,16 @@
 
 # Recurrent Neural Network
 
-  - 
+  ![RNN Unidirectional](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/RNNUnidirectional.GIF)
   
+  - Waa: Weight of the activations to the next layer
+  - Wax: Weight of the input vectors to the next layer
+  - Wya: Weight of the activations to the output layer 
+  
+  - Weakness of RNN: These are uni-directional. The learning from the previous layers get passed on to the next layer. But the learnings from the later words doesn't flow backwards. Example
+    - He said, "Teddy Roosevelt was a great president".
+    - He said, "Teddy bears are on sale"
+      - in these above 2 sentences, the meaning of Teddy cannot be interpreted by the RNN without knowing the later words
+      
+  - Forward Propagation
+    
