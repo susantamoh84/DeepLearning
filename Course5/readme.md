@@ -58,4 +58,18 @@
       -                                                   x< t >  ]  <--- 10100
     - y< t > = g2 ( Wy [ a< t > ] + by ) 
     
+    - Loss Function:
+      - L< t > = -y< t > * logy< t > - (1 -y< t >) * log(1 -y< t >)
+        - for a single sequence ( single word in word represntation )
+      - L = sum( L< t > )
+      
+# Different types of RNN
+
+  - Word Representation: Many to Many ( Many input sequence to many output sequence )
+  - Sentiment Classification: Many to One ( Many input sequence to one output )
+  - Music Generation: One to Many ( input is just one sequence - genre etc )
+  - Machine Translation: Many to Many ( input & output sequences are of different length )
+    - encoder & decoder layers
+ 
+ ![RNN Types](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/RNNTypes.GIF)
     
