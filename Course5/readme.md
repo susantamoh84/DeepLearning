@@ -124,4 +124,17 @@
     
 # Bi-directional RNN
 
+  ![BRNN](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/BRNN.GIF)
+  
+  - The advantage - both previous & future words
+  - Dis-advantage - need full sequence of words before predictions; computionally expensive
+    - Doesn't work well in real-time words prediction
+    - But some applications where full sentence can be extracted, works well.
+        
+# Deep RNN
 
+  - Maximum 3 deep re-current layers ( because of computational expensiveness )
+  - Beyond this there can be more deep layers for y values
+  - Deep RNN block can be also LSTM, GRU, BRNN
+  
+  ![Deep RNN](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/DeepRNN.GIF)
