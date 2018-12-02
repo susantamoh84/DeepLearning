@@ -45,17 +45,17 @@
       - Notation: a <- Wax * x <---- Wax meaning weight to be multiplied to x to get output of a
     
     - In-general:
-    - a<t> = g1 ( Waa * a<t-1> + Wax * x<t> + ba )
-    - y<t> = g2 ( Wya * a<t> + by ) 
+    - a< t > = g1 ( Waa * a< t-1 > + Wax * x<t> + ba )
+    - y< t > = g2 ( Wya * a< t > + by ) 
     
     - Simplified further:
-    - a<t> = g1 ( Wa [ a<t-1> , x<t> ] + ba )
+    - a< t > = g1 ( Wa [ a< t-1 > , x< t > ] + ba )
       - Wa = [ Waa | Wax ]
       - Waa - 100x100
       - Wax - 100x10000
       - Wa  - 100x10100
-      - [ a<t-1> , x<t> ] - stacking the vectors together [ a< t-1 > ,
-      -                                                       x< t >  ]  <--- 10100
-    - y<t> = g2 ( Wy [ a<t> ] + by ) 
+      - [ a< t-1 > , x< t > ] - stacking the vectors together [ a< t-1 > ,
+      -                                                   x< t >  ]  <--- 10100
+    - y< t > = g2 ( Wy [ a< t > ] + by ) 
     
     
