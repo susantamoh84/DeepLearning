@@ -18,5 +18,14 @@
   
 # Representing Words
 
+  ![Word Representation](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/WordRepresentation.GIF)
+  
+  - Standard network doesn't work well
+    - feeding 9 inputs to a NN and have 9 outputs <-- is not a good model
+  - Input & output's can be different lenghts in different examples
+  - Doesn't share features learnt across different positions of the text
 
+# Recurrent Neural Network
+
+  - 
   
