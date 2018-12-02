@@ -39,4 +39,23 @@
       - in these above 2 sentences, the meaning of Teddy cannot be interpreted by the RNN without knowing the later words
       
   - Forward Propagation
+    - a[0] = 0 vector
+    - a[1] = g1 ( Waa * a[0] + Wax * x[1] + ba )  <------ activation is tanh/Relu function
+    - y[1] = g2 ( Wya * a[1] + by )               <------ activation is sigmoid
+      - Notation: a <- Wax * x <---- Wax meaning weight to be multiplied to x to get output of a
+    
+    - In-general:
+    - a<t> = g1 ( Waa * a<t-1> + Wax * x<t> + ba )
+    - y<t> = g2 ( Wya * a<t> + by ) 
+    
+    - Simplified further:
+    - a<t> = g1 ( Wa [ a<t-1> , x<t> ] + ba )
+      - Wa = [ Waa | Wax ]
+      - Waa - 100x100
+      - Wax - 100x10000
+      - Wa  - 100x10100
+      - [ a<t-1> , x<t> ] - stacking the vectors together [ a<t-1>,
+      -                                                       x<t>  ]  <--- 10100
+    - y<t> = g2 ( Wy [ a<t> ] + by ) 
+    
     
