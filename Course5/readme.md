@@ -102,6 +102,7 @@
   - captures the long range influences in the long running sequences
   
   ![GRU](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/GRUC.GIF)
+  ![Full GRU](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/FullGRUC.GIF)
   
   - when Tau ---> 0
     - Ct ~ Ct-1
