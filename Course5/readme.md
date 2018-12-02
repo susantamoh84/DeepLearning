@@ -73,3 +73,7 @@
  
  ![RNN Types](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/RNNTypes.GIF)
     
+
+# Language Model & Sequence Generation
+
+  - 
