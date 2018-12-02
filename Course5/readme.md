@@ -110,6 +110,18 @@
   
 # LSTM ( Long Short Term Memory )
 
-  ![Full GRU](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/FullGRUC.GIF)
+  ![GRU LSTM](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/GRUCvsLSTM.GIF)
   ![LSTM](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/LSTM.GIF)
   
+  - PeeHole Connection
+    - Where the gate connection have a, x & c< t-1 > vectors
+    
+  - GRU vs LSTM
+    - GRU is a more recent invention
+    - researchers try both
+    - GRU is much simpler model than LSTM
+    - LSTM has 3 gates compared to GRU 2 gates and is more powerful and flexible
+    
+# Bi-directional RNN
+
+
