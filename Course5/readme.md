@@ -27,7 +27,7 @@
 
 # Recurrent Neural Network
 
-  ![RNN Unidirectional](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/RNNUnidirectional.GIF)
+  ![RNN Unidirectional](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/RNNUnidirectional1.GIF)
   
   - Waa: Weight of the activations to the next layer
   - Wax: Weight of the input vectors to the next layer
