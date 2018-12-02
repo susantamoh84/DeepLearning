@@ -108,4 +108,8 @@
     - Ct ~ Ct-1
     - The previous weights have a strong influence
   
+# LSTM ( Long Short Term Memory )
 
+  ![Full GRU](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/FullGRUC.GIF)
+  ![LSTM](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/LSTM.GIF)
+  
