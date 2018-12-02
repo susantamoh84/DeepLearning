@@ -76,4 +76,16 @@
 
 # Language Model & Sequence Generation
 
-  - 
+  ![Language Model](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/LanguageModel.GIF)
+  
+  - Language Modelling in RNN
+    - Training set: Large corpus of english text
+      - corpus: large body/amount of text
+    - Tokenize Words
+      - Can add < EOS > - End of sentence token at the end of the sentence
+      - Add punctuations (.) to the vocabulary
+    - Create one-hot encoding of the entire vocabulary ( of all words )
+    - Unknown words are mapped as < UNK > 
+    - In the language RNN model X< t > = y< t-1 >
+    
+    
