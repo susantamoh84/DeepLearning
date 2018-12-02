@@ -88,4 +88,9 @@
     - Unknown words are mapped as < UNK > 
     - In the language RNN model X< t > = y< t-1 >
     
+    ![Lanugage RNN](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/LanguageModelRNN.GIF)
+    ![Charachter RNN](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/CharachterRNN.GIF)
+    ![LanguageRNNEx RNN](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/LanguageRNNEx.GIF)
     
+
+
