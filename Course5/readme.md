@@ -101,8 +101,8 @@
   - Solves the vanishing gradient problem
   - captures the long range influences in the long running sequences
   
-  ![GRU](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/GRUC.GIF)
-  ![Full GRU](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/FullGRUC.GIF)
+  ![GRU](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/GRU.GIF)
+  ![Full GRU](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/FullGRU.GIF)
   
   - when Tau ---> 0
     - Ct ~ Ct-1
@@ -110,7 +110,7 @@
   
 # LSTM ( Long Short Term Memory )
 
-  ![GRU LSTM](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/GRUCvsLSTM.GIF)
+  ![GRU LSTM](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/GRUvsLSTM.GIF)
   ![LSTM](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/LSTM.GIF)
   
   - PeeHole Connection
