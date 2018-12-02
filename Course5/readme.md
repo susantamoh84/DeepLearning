@@ -54,8 +54,8 @@
       - Waa - 100x100
       - Wax - 100x10000
       - Wa  - 100x10100
-      - [ a<t-1> , x<t> ] - stacking the vectors together [ a <t-1> ,
-      -                                                       x<t>  ]  <--- 10100
+      - [ a<t-1> , x<t> ] - stacking the vectors together [ a< t-1 > ,
+      -                                                       x< t >  ]  <--- 10100
     - y<t> = g2 ( Wy [ a<t> ] + by ) 
     
     
