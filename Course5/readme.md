@@ -138,3 +138,12 @@
   - Deep RNN block can be also LSTM, GRU, BRNN
   
   ![Deep RNN](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/DeepRNN.GIF)
+
+# Word Embeddings
+
+  ![Word Features](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/WordFeature.GIF)
+  ![Word Embeddings](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/WordEmbedding.GIF)
+  
+  - Visualization algorithim is t-sne
+  - it maps the point from 300-D space to 2-D space
+  
