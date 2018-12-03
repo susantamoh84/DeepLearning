@@ -205,6 +205,113 @@
     -    = embedding for word j
     - its not efficient to use a matrix vector multiplication as its high dimensional and most of its elements are 0
 
-# 
+# Neural Language Model
+
+  - Using the ej values into a neural network followed by softmax function works very well.
+  - Context/target pairs
+    - Context:  Last 4 words
+    -           4 words on left & right : Example: a glass of orange __ to go along with
+    -           Last 1 word             : arrgne __
+    -           Nearby 1 word           : glass __  ( Also works well )
+    
+# Word2Vec Model
+
+  - Skip-grams:
+    - I want a glass of orange juice to go along with my cereal
+      - Context   : Target
+      - orange      Juice
+      - orange      glass
+      - orange      my
+  - Model:
+    - Vocab size = 10,000K
+    - Context c ("orange") ---> target t ("juice")
+    - Oc --> E --> ec --> O ---> yhat ( ec = E.Oc)
+    - Softmax: p(t|c) = e^theta*ec/sum(e^theta*ec)
+      - Loss: - sum( yi*logyhati )
+    - Primary problem:
+      - Computationally expensive - softmax computation
+    - Hierarchial Softmax
+      - computational complexity: order of log(N)
+      - common words towards the top
+      - less common words deeper in the tree
+
+  - How to sample the context c ?
+    - Uniformly random - not efficient as more common words dominate the sample
+
+# Negative Sampling
+
+  - Defining a new learning problem
+    - Context     Word      target
+    - orange      juice       1
+    - orange      king        0
+    - orange      book        0
+    - orange      the         0
+    - orange      of          0
+    - For each context pick a target words and label as 1
+      - Also pick k random target words and label as 0
+      - K = 5-20 for smaller dataset
+      - K = 2-5 for larger dataset
+    - Here instead of training 10,000 K softmax labels, the model only uses K (2-5) softmax labels
+    - P(wi) = ( f(wi)^0.75 / sum( f(wi)^0.75 ) , 1/|V| )
+    
+# Glove Algorithms
+
+  - Xij = #times i appears in context of j <---- conunt
+    - i is the subscript for t
+    - j is the subscript for c
+  - Model
+    - Minimize SUM(i)SUM(j) f(Xij) ( theta(i)t . ej + bi + bj - log Xij ) ^ 2
+    - f(Xij) = weightage terms
+    - f(Xij) = 0 if Xij = 0
+    - thetai , ej are symmetric
+    - ew final = (ew + thetaw)/2
+    
+# Sentiment Classification
+
+  - challenge is not having huge labeled dataset
+    - word embedding can help here
+  - x - input text
+  - y - sentiment rating
+  
+  - Simple sentiment classification model
+    - for each word find the one-hot vector (o) from the dictionary
+    - compute ej = E . oj <---- total 300-D, 300 features
+    - Average ej 300-D vector
+      - By using average operation the algorithm works for short/long review sentences. 
+      - Even if the review is 100 words long, sum/average all the feature vector for all 100 words --> 300-D feature representation
+    - Feed this to a softmax function 1-5 (possible outcomes) ---> yhat
+    
+    - RNN for Sentiment classification
+      - Compute embedding for all the words in the sentence
+      - All of these embeddings are used as input into a RNN model
+      - Final activation is fed into a softmax function
+      - Many-to-one RNN architecture.
+      
+    - RNN vs Avergae
+      - RNN can identify "not good", "lacking ambiance" as negative sentiment compared to the average model which can't detect it
+
+# Debiasing word embeddings
+
+  - Problem of bias in word embeddings
+    - Man:Woman as King:Queen
+    - Man:Computer_Programmer as Woman:Homemaker ----> wrong it should be Computer_Programmer
+    - Word embedding can reflect gender, ethinicity, age, sexual orientation and other biases of the text used to train the model.
+    - It has wide range of implications in real-life scenarios
+    
+  - 1. Identify bias direction
+    - ehe - eshe
+    - emale - efemale
+    - ...
+    - average <---- take average of all the biases 
+
+  - 2. Neutralize: For every word that is not definational, project to get rid of bias
+    - doctors, babysitters need to be gender neutral
+    - beard need not be neutralized ( Need to select words carefully )
+    
+  - 3. Equalize Pairs: grandmother, grandfather have exactly same distance ( similarity ) from the words like babysitter
+    - pairs are relatively small
+    - possible to hand-pick these pairs
+    
+
     
     
