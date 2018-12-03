@@ -147,3 +147,64 @@
   - Visualization algorithim is t-sne
   - it maps the point from 300-D space to 2-D space
   
+  - Using Word Embeddings
+    - You can use words embeddings for Named Entity Recognition
+      - Using a large corpus ( 100B words ), you can train the model to understand the relationship between words like apple, oranges
+    - Transfer the trained model into a task using smaller word vector
+      - Learn word embedding from lage text corpus ( 1-100B words )
+      - Download pre-trained embedding online
+      - Transfer embedding to new task with smaller training set ( 100K words )
+      - Optional: continue to finetune the words embeddings with new data
+      
+  - Relation to face encoding
+    - face recognition: siamese network to compare encodings of 2 different pictures
+    - Diff with Words embedding:
+      - face recognition takes a new picture and calculates its encoding
+      - words embedding learns a fixed embedding ( using the vocabulary )
+      
+  - By using words embeddings instead of word one-hot vectors, the algorithm can be generalized to learn much better
+  
+# Properties of word embeddings
+
+  - Analogies:
+    - Man --> Woman,  King ---> ? ( Queen ) - Algorithm to learn this
+    -         | Man | Woman | King  | Queen | Apple | Orange |
+    - Gender  | -1  |  1    | -0.95 | 0.97  | 0.00  | 0.01   |
+    - Royal   | 0.01| 0.02  |  0.93 | 0.95  | -0.01 | 0.00   | 
+    - Age     | 0.03| 0.02  |  0.70 | 0.69  | 0.03  | -0.02  |
+    - Food    | 0.09| 0.01  |  0.02 | 0.01  | 0.95  |  0.97  |
+    
+    - eman - ewoman ~= [-2 0 0 0]
+    - eking - equeen ~= [-2 0 0 0]
+      - different man,woman & king,queen is gender
+    - Algorithm
+      - eman - ewoman ~= eking - e? ( queen )
+      
+  - Analogies using word vectors:
+    - man, woman, kind, queen ---> all are represented as 300-D vectors
+    - vector from point man ----> woman & from point kind -----> queen ( represent gender difference )
+    - Final word w: arg max ( Sim ( ew, eking-eman+ewoman ) )
+    - Similarty function:
+      - Sim(u, v) = UtV / ( ||u||2 * ||v||2 )
+      - Cosine similarity
+    - Examples:
+      - Man:Woman as Boy:Girl
+      - Ottawa:Canada as Nairobi:Kenya
+      - Big:Bigger as Tall:Taller
+      - Yen:Japan as Ruble:Russia
+
+# Embedding Matrix
+
+  - In word embedding, the algorithim learns a embedding matrix
+  - Total words in vocabulary = 10,000
+  - Embedding matrix: 300x10,000
+    - O(6267) = [0 0 0 ... 1 (at i=6267) ... 0] <--- One hot representation of the word in the vocabulary
+    - E . O(6257) = 300x10K . 10Kx1 = 300x1 
+    -             = e(6257)
+    - ej = E . Oj
+    -    = embedding for word j
+    - its not efficient to use a matrix vector multiplication as its high dimensional and most of its elements are 0
+
+# 
+    
+    
