@@ -375,7 +375,39 @@
 
 # Bleau Score
 
+  - Bleau - Bilingual Evaluation Understudy
+  - Bleau Score n-gram Pn = sum(n-gram) CountClip ( n-gram ) / sum(n-gram) Count ( n-gram )
+  - Combied Bleau Score: BP*exp( 1/4 * sum(n) Pn )
+  - BP - Brevity Pentaly
+  - BP  = 1 if MT_output_length > reference_output_length
+  -     = exp(1 - MT_output_length / reference_output_length ) otherwise
   
+# Attention Model Intution
+
+  ![attentionmodel](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/attentionmodel.GIF)    
 
 
-    
+# Speech Recognition
+
+  - pre-processing: filt_vec output, spectrogram <--- normalizes the audio volumes at different points of time
+  - Attention model
+  - CTC cost of speech recognition
+    - CTC: connectionist temporal classification
+  ![speechrecogn](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/speechrecogn.GIF) 
+  
+  
+# Trigger Word System
+
+  - Examples:
+    - Amazon Echo: Alexa
+    - Google Home: Okay Google
+    - Apple Siri: Hey Siri
+  - RNN architecure:
+    - Immediately after trigger word set the output to 1.
+    - Else 0
+    - Because of huge imbalace, its good idea to set a few outputs to 1
+
+  ![triggerwords](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/triggerwords.GIF) 
+
+  
+  
