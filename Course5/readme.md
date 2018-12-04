@@ -312,6 +312,70 @@
     - pairs are relatively small
     - possible to hand-pick these pairs
     
+# Basic Model Examples
+  
+  ![Translation](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/translation.GIF)
+  ![imagecaptioning](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/imagecaptioning.GIF)
+  
 
+# Picking the most likely sentence
+
+  ![conditionalmodel](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/conditionalmodel.GIF)
+  
+  - Why not greedy approach ( pick the best first words, best second word, .... )
+    - Because there are more common words which may not be best representation
     
+  ![mostlikelytranslation](https://github.com/susantamoh84/DeepLearning/blob/master/Course5/mostlikelytranslation.GIF)    
+  
+  - Suggested algorithim: arg max P( yi, y2..... yn | x) <----- maximizes the overall probability -- Beam Search
+  
+
+# Beam Search Algorithm
+
+  - It's heurestic search ( not exact search )
+  - Take the input vector and find the probabilities for the words for the first output yhat1
+  - Select the top k words for yhat1 ( beam width = k )
+  - For one word from top k words in yhat1, find the most likely words for yhat2 ( yhat1 is fed to the next layer )
+    - Select the pair of words (yhat1, yhat2) which gives the maximum probability
+      - P( yhat1, yhat2 | x ) = P( yhat1 | x ) * P( yhat2 | x , yhat1 )
+    - Do this for all possible combinations of words
+    - From all of these combinations, pick the top k which maximizes the probability
+
+# Refinements to Beam Search
+
+  - Length Normalization
+    - instead of taking Product ( P( yi, y2..... yn | x) ) take SUM ( log P( yi, y2..... yn | x) )
+      - log function makes the algorithim more stable and safe from numberical round errors
+    - Normalization: (1/Ty^alpha) *SUM ( log P( yi, y2..... yn | x) )
+      - alpha = 1: complete normalization
+      
+  - How to choose B ?
+    - Larger B -- More computationally expensive algorithm, better result
+    - Smaller B -- Fast, worse result
+    - Try different B values -- 10, 100, 1000, 3000 
+    
+  - Beam search runs fater BFS, DFS but not guranteed to find the maximum probability
+
+# Error Analysis In Beam Search
+
+  - Errors in different componenets
+    - RNN
+    - Beam Search
+    
+  - Y* is human translation
+  - Yhat is machine translation
+  - In the RNN try to find P ( Y* | x ) & P ( Yhat | x ) and see which one is better
+    - By doing above the error can be assigned to either RNN or Beam Search    
+    - Case1: P ( Y* | x ) >  P ( Yhat | x )
+      - This is Beam Search error as its unable to find the maximum P
+      - Increase Beam width
+    - Case1: P ( Y* | x ) <=  P ( Yhat | x )
+      - This is RNN error as its unable to find the better translation Y*
+      - Deeper analysis: reguarization, more training data, network architecture
+
+# Bleau Score
+
+  
+
+
     
