@@ -354,7 +354,7 @@
     - Smaller B -- Fast, worse result
     - Try different B values -- 10, 100, 1000, 3000 
     
-  - Beam search runs fater BFS, DFS but not guranteed to find the maximum probability
+  - Beam search runs faster than BFS, DFS but not guranteed to find the maximum probability
 
 # Error Analysis In Beam Search
 
